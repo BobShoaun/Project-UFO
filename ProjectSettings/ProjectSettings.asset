@@ -627,10 +627,10 @@ PlayerSettings:
   cloudServicesEnabled:
     Collab: 1
     UNet: 1
-  facebookSdkVersion: 
+  facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
   cloudProjectId: db3d28f4-ec1e-4410-87a1-ceab838a3950
-  projectName: UFO Invasion
+  projectName: Project UFO Destruction
   organizationId: doxel
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
