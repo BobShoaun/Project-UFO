@@ -11,7 +11,6 @@ public class Gun : MonoBehaviour {
 	public Collider2D ignore;
 
 	void Start () {
-		
 	}
 	
 	// Update is called once per frame

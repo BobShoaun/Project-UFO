@@ -4,25 +4,25 @@ using UnityEngine;
 
 public class UFO : MonoBehaviour, IDamageable {
 
-	private Rigidbody2D rb;
 	public float moveSpeed;
 	public float rotateSpeed;
 	public float suckStrength;
-	private bool inputDetected;
-	public GameObject tractorBeam;
+    public GameObject tractorBeam;
 
+    [SerializeField] private Transform bombDropZone;
+    [SerializeField] private Bomb bombPrefab;
 
-	public int Health = 100;
+    public int Health = 100;
 
-	// Use this for initialization
-	void Start () {
+    private Rigidbody2D rb;
+    private bool inputDetected;
+
+	private void Start () {
 		rb = GetComponent<Rigidbody2D> ();
-		//test
 		
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+	private void Update () {
 		inputDetected = Input.GetAxis ("Horizontal") > 0 ||  Input.GetAxis ("Horizontal") < 0;
 
 		float rotation = Mathf.MoveTowards (rb.rotation, Input.GetAxis ("Horizontal") * -30, rotateSpeed * Time.deltaTime);
@@ -49,13 +49,20 @@ public class UFO : MonoBehaviour, IDamageable {
 		if (Input.GetKey (KeyCode.A)) {
 			//rb.AddForce (Vector2.left * speed, ForceMode2D.Force);
 		}
-		if (Input.GetKeyDown (KeyCode.A)) {
-		//	rb.AddTorque (-10);
-		}
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            //	rb.AddTorque (-10);
+        }
 
-		
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+            DeployBomb();
 
 	}
+
+    private void DeployBomb()
+    {
+        Instantiate(bombPrefab, bombDropZone.position, Quaternion.identity);
+    }
 
 	private void FixedUpdate () {
 		if (inputDetected) {

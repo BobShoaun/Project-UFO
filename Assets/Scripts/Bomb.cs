@@ -4,17 +4,40 @@ using UnityEngine;
 
 public class Bomb : MonoBehaviour {
 
-	// Use this for initialization
-	IEnumerator Start () {
-		yield return new WaitForSeconds (3);
-		 RaycastHit[] hits = null;
-	//	if (Physics2D.CircleCast (transform.position, 3, Vector2.left, 3, 0, hits) > 0) {
+    [SerializeField] private float timer = 3;
+    [SerializeField] private float explosionRadius = 0.5f;
+    [SerializeField] private int damage = 20;
+    [SerializeField] private Explosion explosionPrefab;
 
-	//	}
+	protected virtual IEnumerator Start () {
+
+        print("SHUDING BE CALLED");
+        if (timer < 0) // dont detonate by itself
+            yield break;
+
+		yield return new WaitForSeconds (timer);
+
+        Explode();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    public void Explode()
+    {
+        Explode(transform.position);
+    }
+
+    public void Explode(Vector2 point)
+    {
+        Destroy(gameObject);
+        
+        var hits = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
+
+        foreach (var hit in hits)
+        {
+            
+            hit.GetComponent<IDamageable>()?.TakeDamage(damage);
+        }
+
+        Instantiate(explosionPrefab, point, Quaternion.identity);
+    }
+
 }

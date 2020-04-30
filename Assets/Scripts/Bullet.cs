@@ -9,13 +9,17 @@ public class Bullet : MonoBehaviour {
 		GetComponent<Rigidbody2D> ().velocity = velocity;
 	}	
 	
+    
 	private void OnCollisionEnter2D (Collision2D collision) {
+        
 		//if (collision.gameObject.layer == LayerMask.NameToLayer ("Player"))
-		print (collision.gameObject.name);
+		//print (collision.gameObject.name);
 		if (collision.gameObject.GetComponent<IDamageable> () != null)
 			collision.gameObject.GetComponent<IDamageable> ().TakeDamage (10);
 		Destroy (gameObject);
 	}
+
+
 
 }
 
