@@ -8,8 +8,6 @@ public class Gun : MonoBehaviour {
 	public float fireRate = 2;
 	private float nextFireTime;
 
-	public Collider2D ignore;
-
 	void Start () {
 	}
 	
@@ -21,15 +19,16 @@ public class Gun : MonoBehaviour {
 		//gun.LookAt ();
 
 		// fire
-		if (Input.GetMouseButton (0) && Time.time >= nextFireTime) {
-			nextFireTime = Time.time + 1 / fireRate;
+		if (Input.GetMouseButton (0) && Time.time >= nextFireTime)
+			Fire (dir);
 
-			Bullet bullet = Instantiate (bulletPrefab, transform.position, transform.rotation);
-		//	bullet.transform.right = dir;
-			bullet.Init ( ignore, dir * 20);
-		//	bullet.velocity = dir * 20;
-			Destroy (bullet.gameObject, 5);
-
-		}
 	}
+
+	public void Fire(Vector2 dir) {
+		nextFireTime = Time.time + 1 / fireRate;
+		Bullet bullet = Instantiate (bulletPrefab, transform.position, transform.rotation);
+		bullet.gameObject.layer = gameObject.layer;
+		bullet.Init (dir * 20);
+	}
+
 }

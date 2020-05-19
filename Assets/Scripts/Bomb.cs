@@ -11,7 +11,6 @@ public class Bomb : MonoBehaviour {
 
 	protected virtual IEnumerator Start () {
 
-        print("SHUDING BE CALLED");
         if (timer < 0) // dont detonate by itself
             yield break;
 

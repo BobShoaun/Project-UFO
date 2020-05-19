@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4645171358758070854}
   - component: {fileID: 1926269734171964870}
   - component: {fileID: 457103987438780040}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135,6 +135,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7366fcd4066d5084f9d392178b89b90b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coinPrefab: {fileID: 5198931004139122438, guid: fee2e9b70ee503f45825557bb945d1bc,
+    type: 3}
   gun: {fileID: 1926269734192761300}
   target: {fileID: 0}
   fireRate: 1
@@ -164,7 +166,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1926269734192761300}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -197,7 +199,7 @@ GameObject:
   - component: {fileID: 1926269734829068221}
   - component: {fileID: 1926269734829068222}
   - component: {fileID: 8068131214683097385}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}

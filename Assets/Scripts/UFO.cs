@@ -46,37 +46,36 @@ public class UFO : MonoBehaviour, IDamageable {
 
 		tractorBeam.SetActive (Input.GetKey (KeyCode.Space));
 
-		if (Input.GetKey (KeyCode.A)) {
-			//rb.AddForce (Vector2.left * speed, ForceMode2D.Force);
-		}
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            //	rb.AddTorque (-10);
-        }
-
         if (Input.GetKeyDown(KeyCode.Mouse1))
             DeployBomb();
 
 	}
 
-    private void DeployBomb()
-    {
+    public void DeployBomb() {
         Instantiate(bombPrefab, bombDropZone.position, Quaternion.identity);
     }
+
+	public void Repair() {
+		Health += 500;
+	}
 
 	private void FixedUpdate () {
 		if (inputDetected) {
 			//rb.AddForce (Vector2.right * Input.GetAxis("Horizontal") * speed, ForceMode2D.Force);
 			//rb.AddTorque (10);
 			//rb.MoveRotation (20);
-
 		}
 	}
 
 	public void TakeDamage (int damage) {
 		Health -= damage;
 		if (Health <= 0)
-			Destroy (gameObject);
+			Die ();
+	}
+
+	public void Die() {
+		Debug.Break ();
+		Destroy (gameObject);
 	}
 
 	void OnTriggerStay2D (Collider2D collider2D) {

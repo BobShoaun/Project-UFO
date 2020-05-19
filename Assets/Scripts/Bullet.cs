@@ -3,8 +3,12 @@ using System.Collections;
 
 public class Bullet : MonoBehaviour {
 
-	public void Init (Collider2D col, Vector2 velocity) {
-		Physics2D.IgnoreCollision (GetComponent<Collider2D> (), col);
+	private void Start () {
+		Destroy (gameObject, 5);
+	}
+
+	public void Init (Vector2 velocity) {
+		//Physics2D.IgnoreCollision (GetComponent<Collider2D> (), col);
 		transform.right = velocity;
 		GetComponent<Rigidbody2D> ().velocity = velocity;
 	}	
@@ -14,8 +18,7 @@ public class Bullet : MonoBehaviour {
         
 		//if (collision.gameObject.layer == LayerMask.NameToLayer ("Player"))
 		//print (collision.gameObject.name);
-		if (collision.gameObject.GetComponent<IDamageable> () != null)
-			collision.gameObject.GetComponent<IDamageable> ().TakeDamage (10);
+		collision.gameObject.GetComponent<IDamageable> ()?.TakeDamage (10);
 		Destroy (gameObject);
 	}
 

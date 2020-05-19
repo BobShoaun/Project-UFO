@@ -5,6 +5,7 @@ using UnityEngine;
 public class Car : Bomb, IDamageable
 {
 
+	[SerializeField] private Collectible coinPrefab;
     [SerializeField] private float speed;
     [SerializeField] private float stoppingThreshold = 0.01f;
     [SerializeField] private Transform explosionPoint;
@@ -59,8 +60,11 @@ public class Car : Bomb, IDamageable
 
     public void TakeDamage(int damage) {
         health -= damage;
-        if (health <= 0)
-            Explode(explosionPoint.position);
+		if (health <= 0) {
+			Explode (explosionPoint.position);
+			Instantiate (coinPrefab, transform.position, Quaternion.identity);
+			Instantiate (coinPrefab, transform.position, Quaternion.identity);
+		}
     }
 
 

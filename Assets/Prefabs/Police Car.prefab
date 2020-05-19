@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2522416381649149852}
   - component: {fileID: 2522416381649149849}
   - component: {fileID: 297721489}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Police Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,6 +177,8 @@ MonoBehaviour:
   damage: 50
   explosionPrefab: {fileID: 3229299745451637166, guid: be6a9800c9d4c5c4c8c96dfdd6bfda43,
     type: 3}
+  coinPrefab: {fileID: 5198931004139122438, guid: fee2e9b70ee503f45825557bb945d1bc,
+    type: 3}
   speed: 1
   stoppingThreshold: 0.01
   explosionPoint: {fileID: 2522416382919670861}
@@ -204,7 +206,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2522416382919670861}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Explosion Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
